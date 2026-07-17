@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#B8912F">
-<title>發票載具｜用戶體驗版 v5.7・未接第三方支付（示範小程序）</title>
+<title>發票載具｜用戶體驗版 v5.8・未接第三方支付（示範小程序）</title>
 <style>
 :root{
   --navy:#1F3352; --teal:#0E7C7B; --teal-deep:#0A5F5E; --gold:#B8912F; --gold-bg:#FAF3DF;
@@ -777,6 +777,100 @@ button:focus-visible,a:focus-visible{outline:3px solid #7FD1CC;outline-offset:2p
   .statusbar{display:none}
   .capsule{top:calc(10px + env(safe-area-inset-top,0px))}
 }
+
+/* ===== v5.8 官方自營：中毒快篩（dx）＋ 呷健康隊（tm）（提案新增） ===== */
+#detox{background:#FFF7F7}
+#team{background:#F4FBF7;position:relative}
+.gx-head{padding:46px 16px 12px;display:flex;align-items:center;gap:8px;background:#fff;border-bottom:1px solid var(--line)}
+.gx-head .back{font-size:20px;padding:2px 10px 2px 0;color:var(--ink);background:none;border:none}
+.gx-head h2{font-size:16px;font-weight:800;color:var(--ink)}
+.gx-head .gx-off{margin-left:auto;font-size:9px;font-weight:800;color:#fff;background:linear-gradient(135deg,#D7000F,#A50011);padding:3px 8px;border-radius:99px;white-space:nowrap}
+.gx-body{padding:14px;display:flex;flex-direction:column;gap:12px;flex:1}
+.gx-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;text-align:left}
+.gx-note{font-size:10px;color:var(--muted);line-height:1.65}
+.gx-btn{display:block;width:100%;border:none;border-radius:12px;padding:13px;font-size:13.5px;font-weight:800;color:#fff;background:linear-gradient(135deg,#D7000F,#A50011)}
+.gx-btn.line{background:#fff;color:#A50011;border:1.5px solid #F3B9BD}
+.gx-btn.tm{background:linear-gradient(135deg,#2E9E6B,#177A4C)}
+.gx-row{display:flex;gap:8px}
+.gx-row .gx-btn{flex:1;padding:11px 4px;font-size:12px}
+.dx-hero{background:linear-gradient(160deg,#FFE9EA,#FFF7F7);border:1px solid #F7D3D6;border-radius:16px;padding:18px 14px;text-align:center}
+.dx-hero .big{font-size:44px;line-height:1}
+.dx-hero h3{font-size:17.5px;font-weight:900;color:#A50011;margin:8px 0 3px}
+.dx-hero p{font-size:12px;color:#8A5A5E;line-height:1.6}
+.dx-face{font-size:54px;text-align:center;line-height:1.2}
+.dx-slider{width:100%;accent-color:#D7000F;margin-top:4px}
+.dx-guessv{font-size:30px;font-weight:900;color:#D7000F;text-align:center;line-height:1.1}
+.dx-stick{width:212px;margin:10px auto 2px;background:#fff;border:1.5px solid #E8DDDD;border-radius:26px;padding:12px 16px 8px;box-shadow:0 8px 20px rgba(160,0,17,.08)}
+.dx-well{width:26px;height:26px;border-radius:50%;background:#F3E7E7;margin:0 auto 8px;border:1px solid #E3CFCF}
+.dx-win{height:42px;border-radius:8px;background:#FDF9F4;border:1px solid #EADFD3;position:relative;overflow:hidden}
+.dx-line{position:absolute;top:6px;bottom:6px;width:7px;border-radius:3px}
+.dx-line.c{left:34%;background:#7A4B50}
+.dx-line.t{left:58%;background:#C40010;opacity:0;transition:opacity 1.6s ease}
+.dx-line.t.show{opacity:1}
+.dx-line.t.half{opacity:.4}
+.dx-fly{height:28px;text-align:center;font-size:17px}
+.dx-fly span{display:inline-block;animation:dxfly 1.1s ease-in infinite}
+.dx-fly span:nth-child(2){animation-delay:.25s}
+.dx-fly span:nth-child(3){animation-delay:.5s}
+@keyframes dxfly{0%{transform:translateY(13px);opacity:0}45%{opacity:1}100%{transform:translateY(-15px);opacity:0}}
+.dx-gap{display:flex;align-items:center;justify-content:center;gap:16px;text-align:center;margin-top:6px}
+.dx-gap .n{font-size:30px;font-weight:900;line-height:1.15}
+.dx-gap .g .n{color:#8B96A3}
+.dx-gap .r .n{color:#D7000F}
+.dx-gap .vs{font-size:12px;font-weight:800;color:#B8912F}
+.dx-gag{text-align:center;font-size:12.5px;font-weight:800;color:#A50011;background:#FDECEC;border-radius:8px;padding:8px}
+.dx-bar{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:#5B4A4C;margin-top:8px}
+.dx-bar .nm{width:66px;white-space:nowrap}
+.dx-bar .tr{flex:1;height:9px;border-radius:99px;background:#F4E7E8;overflow:hidden}
+.dx-bar .fl{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,#F08A93,#D7000F);width:0;transition:width .9s ease}
+.dx-bar .v{width:22px;text-align:right;color:#A50011}
+.dx-pers{display:flex;gap:10px;align-items:center;margin-top:8px}
+.dx-pers .em{width:52px;height:52px;border-radius:14px;background:#FDECEC;display:flex;align-items:center;justify-content:center;font-size:25px;flex:0 0 52px}
+.dx-pers b{font-size:13.5px;color:#A50011}
+.dx-ok{display:flex;gap:8px;align-items:center;font-size:12px;color:#177A4C;background:#E9FBF4;border:1px solid #CFF0E1;border-radius:10px;padding:9px 10px;font-weight:800}
+.dx-hit{background:#FFF8EC;border:1px solid #F2DFB8;border-radius:12px;padding:12px;margin-top:8px}
+.dx-hit b{color:#8A5A00}
+.dx-prog{height:8px;border-radius:99px;background:#F4E7E8;overflow:hidden;margin-top:8px}
+.dx-prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,#F08A93,#D7000F);transition:width 1.5s ease}
+.dx-st{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px dashed #F0E2E3}
+.dx-st.f{border-top:none;padding-top:6px}
+.dx-st .lg{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:19px;background:#E9FBF4;flex:0 0 40px}
+.dx-st .in{flex:1;min-width:0}
+.dx-st .in b{font-size:12.5px;color:var(--ink);display:block}
+.dx-st .in small{font-size:10px;color:var(--muted);display:block;margin-top:2px}
+.dx-cross{font-size:8.5px;font-weight:800;color:#fff;background:#1F9D63;border-radius:5px;padding:1.5px 5px;vertical-align:1px}
+.dx-st .ac{display:flex;flex-direction:column;gap:5px}
+.dx-st .ac button{font-size:10.5px;font-weight:800;border-radius:8px;padding:6px 9px;border:1px solid #F3B9BD;color:#A50011;background:#fff;white-space:nowrap}
+.dx-st .ac button.go{background:linear-gradient(135deg,#2E9E6B,#177A4C);color:#fff;border:none}
+.dx-score{display:flex;align-items:baseline;gap:5px;justify-content:center}
+.dx-score b{font-size:34px;color:#D7000F;line-height:1}
+.tm-pet{background:linear-gradient(160deg,#E9FBF4,#F7FFFB);border:1px solid #CFF0E1;border-radius:16px;padding:14px;text-align:center}
+.tm-face{font-size:62px;line-height:1.15;transition:transform .25s}
+.tm-face.hop{animation:tmhop .5s ease 2}
+@keyframes tmhop{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tm-hp{height:10px;border-radius:99px;background:#DFF2E8;overflow:hidden;margin:8px 0 4px}
+.tm-hp i{display:block;height:100%;background:linear-gradient(90deg,#57C793,#177A4C);transition:width .5s}
+.tm-say{display:inline-block;background:#fff;border:1px solid #CFF0E1;border-radius:12px;padding:7px 11px;font-size:11.5px;color:#175E42;font-weight:700;margin-top:7px;line-height:1.5}
+.tm-meta{font-size:11px;color:#4E8A6F;font-weight:800}
+.tm-feed{max-height:186px;overflow:auto;display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.tm-fd{display:flex;justify-content:space-between;gap:8px;font-size:11.5px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 10px;align-items:center}
+.tm-fd b.plus{color:#177A4C;white-space:nowrap}
+.tm-fd b.minus{color:#D7000F;white-space:nowrap}
+.tm-rank{display:flex;flex-direction:column;gap:6px;margin-top:8px}
+.tm-rk{display:flex;gap:8px;align-items:center;font-size:12px;padding:8px 10px;border-radius:10px;background:#fff;border:1px solid var(--line)}
+.tm-rk.me{background:#E9FBF4;border-color:#9FDCC0;font-weight:800}
+.tm-rk .no{width:16px;font-weight:900;color:#B8912F}
+.tm-med{background:#FFF3F3;border:1.5px dashed #F3A6AC;border-radius:12px;padding:12px;text-align:center}
+.tm-banner{background:linear-gradient(135deg,#B8912F,#8F6C1B);border-radius:14px;color:#fff;padding:12px 14px;text-align:left;border:none;width:100%}
+.tm-banner b{font-size:13px}
+.tm-banner small{display:block;font-size:10.5px;opacity:.92;margin-top:3px}
+.tm-mask{position:absolute;inset:0;background:rgba(15,40,30,.45);display:none;align-items:center;justify-content:center;z-index:40;padding:22px}
+.tm-mask.show{display:flex}
+.tm-qz{background:#fff;border-radius:16px;padding:16px;width:100%}
+.tm-qz h4{font-size:13.5px;font-weight:900;color:var(--ink);margin-bottom:4px;line-height:1.55}
+.tm-qz .src{font-size:9.5px;color:var(--muted);margin-bottom:6px}
+.tm-qz button.op{display:block;width:100%;text-align:left;border:1px solid var(--line);background:#FAFBFC;border-radius:10px;padding:10px 12px;font-size:12.5px;font-weight:700;margin-top:8px;color:var(--ink)}
+
 </style>
 </head>
 <body>
@@ -787,7 +881,7 @@ window.onerror=function(m,s,l,c){try{var b=document.getElementById("errbox");if(
 
 <div class="stage">
   <div class="stage-head">
-    <div class="eyebrow">發票載具 · 小程序 DEMO v5.7 · 未接支付情境</div>
+    <div class="eyebrow">發票載具 · 小程序 DEMO v5.8 · 未接支付情境</div>
     <h1>用戶體驗版（未接第三方支付）｜預點 → 到店付款＋嗶載具</h1>
     <p>首頁依真實 App 截圖重建 · 小程序內容以「提案新增」嵌入 · 資料皆為模擬</p>
   </div>
@@ -817,14 +911,16 @@ window.onerror=function(m,s,l,c){try{var b=document.getElementById("errbox");if(
             </div>
           </div>
           <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
-          <button class="bubble" onclick="toast('食安快訊（示範）：用「食安快篩」比對你的發票品項')">致癌油流入市面，你中鏢了嗎？<span class="arr">▸</span></button>
+          <button class="bubble" onclick="openDetox('safe')">致癌油流入市面，你中鏢了嗎？<span class="arr">▸</span></button>
           <div class="hill"><span class="spot l"></span><span class="sprout">🌱</span><span class="spot r"></span></div>
         </div>
 
         <div class="shelf">
           <button class="tile" onclick="openDrawer()"><span class="tic" style="background:#E9FBF4">🧩</span>小程序<span class="new">NEW</span></button>
-          <button class="tile" onclick="toast('消費分析（示範）：發票明細自動分類，看懂每一筆花費')"><span class="tic">📊</span>消費分析<span class="new">NEW</span></button>
-          <button class="tile" onclick="toast('食安快篩（示範）：發票品項自動比對食安公告')"><span class="tic">🔍</span>食安快篩<span class="new">NEW</span></button>
+          <button class="tile" onclick="toast('消費分析（示範）：發票明細自動分類，看懂每一筆花費——吃進了什麼？去「中毒快篩」驗')"><span class="tic">📊</span>消費分析<span class="new">NEW</span></button>
+          <button class="tile" onclick="toast('食安快篩（示範）：發票品項自動比對食安公告——想玩遊戲版？試試「中毒快篩」')"><span class="tic">🔍</span>食安快篩<span class="new">NEW</span></button>
+          <button class="tile" onclick="openDetox()"><span class="tic" style="background:#FDECEC">🧪</span>中毒快篩<span class="new">NEW</span></button>
+          <button class="tile" onclick="openTeam()"><span class="tic" style="background:#FFF3D6">🐣</span>呷健康隊<span class="new">NEW</span></button>
           <button class="tile" onclick="toast('我的獎勵（示範）：中獎放大 · 槓龜安慰獎 · 兌換紀錄')"><span class="tic">🎁</span>我的獎勵</button>
           <button class="tile" onclick="toast('每日運籤（示範）：天天擲筊求好運')"><span class="tic">🥠</span>每日運籤</button>
           <button class="tile" onclick="toast('造型條碼（示範）：上傳動漫、梗圖做成造型載具')"><span class="tic">🎨</span>造型條碼</button>
@@ -1176,6 +1272,217 @@ window.onerror=function(m,s,l,c){try{var b=document.getElementById("errbox");if(
         </div>
       </section>
 
+
+      <!-- ============ 官方自營①：中毒快篩（v5.8 提案新增） ============ -->
+      <section class="scene" id="detox">
+        <div class="gx-head"><button class="back" onclick="dxBack()" aria-label="返回">‹</button><h2>🧪 中毒快篩</h2><span class="gx-off">官方自營 · 提案新增</span></div>
+        <div class="gx-body">
+          <div id="dxV0">
+            <div class="dx-hero">
+              <div class="big">🧪</div>
+              <h3>30 秒，驗出你最近吃進多少毒</h3>
+              <p>吸入你近 30 天的發票 → 顯影 → 兩條線見真章<br>先猜、後驗——看你對自己的嘴有多寬容</p>
+            </div>
+            <div style="height:12px"></div>
+            <button class="gx-btn" onclick="dxShow('v1')">開始檢測</button>
+            <div style="height:8px"></div>
+            <div class="gx-row">
+              <button class="gx-btn line" onclick="dxShow('v4');dxRunSafe()">🛡️ 真食安比對</button>
+              <button class="gx-btn line" onclick="dxShow('v5')">💊 解毒站地圖</button>
+            </div>
+            <div style="height:10px"></div>
+            <div class="gx-note">已讀取近 30 天 47 張發票 · 23 家商家（示範數據）。毒值只評估「你自己」的消費結構，不對任何商家貼標；計分規則公開可查、誤判可回報。</div>
+          </div>
+          <div id="dxV1" style="display:none">
+            <div class="gx-card" style="text-align:center">
+              <div style="font-size:12.5px;font-weight:800;color:#8A5A5E">先猜猜：你近 30 天的「綜合中毒指數」？</div>
+              <div class="dx-face" id="dxFace">😏</div>
+              <div class="dx-guessv"><span id="dxGv">40</span><span style="font-size:14px;color:#B8912F"> /100</span></div>
+              <input class="dx-slider" id="dxSl" type="range" min="0" max="100" value="40" oninput="dxGuessUpd(this.value)" aria-label="猜測中毒指數">
+              <div class="gx-note" style="margin-top:6px">0＝仙人掌都比你毒 · 100＝行走的防腐劑</div>
+            </div>
+            <div style="height:10px"></div>
+            <button class="gx-btn" onclick="dxStartTest()">我猜好了，開驗！</button>
+          </div>
+          <div id="dxV2" style="display:none">
+            <div class="gx-card" style="text-align:center">
+              <div class="dx-fly"><span>🧾</span><span>🧾</span><span>🧾</span></div>
+              <div class="dx-stick">
+                <div class="dx-well"></div>
+                <div class="dx-win"><span class="dx-line c"></span><span class="dx-line t" id="dxT"></span></div>
+                <div style="display:flex;justify-content:center;gap:44px;font-size:9px;color:#9A8A8A;margin-top:4px"><span>C</span><span>T</span></div>
+              </div>
+              <div style="font-size:12.5px;font-weight:800;color:#A50011;margin-top:6px" id="dxTestTxt">吸入發票中…</div>
+              <div class="gx-note">正在分析 47 張發票的品項與商家（示範）</div>
+            </div>
+          </div>
+          <div id="dxV3" style="display:none">
+            <div class="gx-card">
+              <div style="text-align:center;font-size:11px;font-weight:800;color:#B8912F;letter-spacing:2px">檢 測 結 果</div>
+              <div class="dx-gap">
+                <span class="g"><span class="n" id="dxGr">40</span><br><small style="font-size:10px;color:#8B96A3">你猜的</small></span>
+                <span class="vs">VS</span>
+                <span class="r"><span class="n" id="dxRv">78</span><br><small style="font-size:10px;color:#D7000F">實測</small></span>
+              </div>
+              <div style="height:8px"></div>
+              <div class="dx-gag" id="dxGag">落差 +38——你對自己的嘴，太寬容了</div>
+              <div style="height:12px"></div>
+              <div class="dx-win" style="max-width:170px;margin:0 auto"><span class="dx-line c"></span><span class="dx-line t show" id="dxT2"></span></div>
+              <div style="text-align:center;font-size:10px;color:#9A8A8A;margin-top:5px">兩條線 · T 線越深＝濃度越高（綜合 <b id="dxSc1">78</b>/100）</div>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">五毒雷達（近 30 天）</b>
+              <div class="dx-bar"><span class="nm">🧋 糖毒</span><span class="tr"><i class="fl" data-w="82"></i></span><span class="v">82</span></div>
+              <div class="dx-bar"><span class="nm">🍗 油毒</span><span class="tr"><i class="fl" data-w="74"></i></span><span class="v">74</span></div>
+              <div class="dx-bar"><span class="nm">🧂 鈉毒</span><span class="tr"><i class="fl" data-w="58"></i></span><span class="v">58</span></div>
+              <div class="dx-bar"><span class="nm">🥫 加工</span><span class="tr"><i class="fl" data-w="46"></i></span><span class="v">46</span></div>
+              <div class="dx-bar"><span class="nm">☕ 咖啡因</span><span class="tr"><i class="fl" data-w="66"></i></span><span class="v">66</span></div>
+              <div class="gx-note" style="margin-top:9px">主要來源：全糖手搖 ×12 · 鹽酥雞 ×5 · 超商甜點 ×7（依發票品項自動判定 · POS 直連店可讀到糖度冰塊，更準）</div>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">你的中毒人格</b>
+              <div class="dx-pers"><span class="em">🐜</span><span><b>螞蟻人 × 酥脆星人</b><br><small style="font-size:11px;color:#8A5A5E">綜合稱號：「糖油雙修 · 夜市修行者」</small></span></div>
+              <div style="height:10px"></div>
+              <button class="gx-btn line" onclick="toast('人格卡已生成（示範）：可分享至 LINE——每張卡自帶落地頁與歸因碼')">📤 分享人格卡，揪朋友對照</button>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">身邊的人（LBS · 匿名聚合）</b>
+              <div style="font-size:12px;color:#5B4A4C;line-height:1.75;margin-top:6px">📍 <b>府中商圈</b> 本週糖毒濃度 <b style="color:#D7000F">72</b> · 全市第 3<br>你的中毒程度，贏過同商圈 <b style="color:#D7000F">83%</b> 的上班族</div>
+              <div style="height:9px"></div>
+              <button class="gx-btn line" onclick="toast('好友 PK（示範）：邀請卡已生成——需對方同意後才會出對比卡（雙向同意）')">⚔️ 傳 LINE 跟朋友 PK</button>
+            </div>
+            <div class="gx-row">
+              <button class="gx-btn line" onclick="dxShow('v4');dxRunSafe()">🛡️ 真食安比對</button>
+              <button class="gx-btn" onclick="dxShow('v5')">💊 解毒處方</button>
+            </div>
+            <button class="gx-btn tm" onclick="openTeam()">🐣 一個人解毒太慢——找隊友一起（呷健康隊）</button>
+          </div>
+          <div id="dxV4" style="display:none">
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">🛡️ 真食安比對</b>
+              <div class="gx-note" style="margin-top:4px">將你近 90 天發票的商家與品項，比對<b>官方公告</b>（食藥署與各縣市衛生局之下架／回收／流向名單）——僅轉載官方原文，逐條標註來源與日期。</div>
+              <div class="dx-prog"><i id="dxPg"></i></div>
+              <div style="font-size:11px;color:#8A5A5E;margin-top:6px" id="dxPgt">掃描中：近 90 天 61 家消費商家…</div>
+            </div>
+            <div id="dxSafeR" style="display:none">
+              <div class="dx-ok">✓　60 家未命中現行公告名單</div>
+              <div class="dx-hit">
+                <b>⚠ 1 筆提醒（示範情境）</b>
+                <div style="font-size:11.5px;color:#6B5330;line-height:1.75;margin-top:5px">6/30 你在「好味鹽酥雞 中山店」的消費——該店使用之油品批號，列於 <b>7/9 公布之第三層下架名單</b>（來源：台中市食安處 · 示範）。該批號目前已全面下架。</div>
+                <div class="gx-row" style="margin-top:9px">
+                  <button class="gx-btn line" onclick="toast('（示範）開啟官方公告原文連結')">查看官方公告</button>
+                  <button class="gx-btn line" onclick="toast('（示範）退換貨方式與身體不適就醫指引（官方）')">退換貨／就醫指引</button>
+                </div>
+              </div>
+              <div style="height:10px"></div>
+              <div class="gx-card">
+                <b style="font-size:13px;color:var(--ink)">👨‍👩‍👧 幫家人驗（載具已歸戶）</b>
+                <div style="height:8px"></div>
+                <div id="dxFam"><button class="gx-btn line" onclick="dxFamily()">一鍵複驗：媽媽的發票（近 90 天）</button></div>
+              </div>
+              <div style="height:8px"></div>
+              <div class="gx-note">紅線：商家層級警示<b>僅限官方公告原文轉載</b>；毒值只評你自己的消費結構，平台不對商家做任何「毒」標籤。</div>
+              <button class="gx-btn" onclick="dxShow('v5')">💊 去看解毒處方</button>
+            </div>
+          </div>
+          <div id="dxV5" style="display:none">
+            <div class="gx-card" style="text-align:center">
+              <div style="font-size:11px;font-weight:800;color:#B8912F">目前綜合中毒</div>
+              <div class="dx-score"><b id="dxSc2">78</b><span style="font-size:13px;color:#8B96A3">/100</span></div>
+              <div class="gx-note" id="dxScNote">到解毒站消費，發票核銷後毒值即時下降、T 線變淺</div>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">本週解毒任務</b>
+              <div style="font-size:12px;color:#5B4A4C;line-height:1.95;margin-top:6px">□ 連續 3 天無含糖手搖（0/3）<br>□ 本週 2 次解毒站（<span id="dxTk">0</span>/2）——完成領 <b style="color:#A50011">NT$50 解毒券</b>（核銷後入帳）</div>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">📍 附近解毒站（板橋府中）</b>
+              <div class="dx-st f"><span class="lg">🥗</span><span class="in"><b>暖暖窩義式廚房 <span class="dx-cross">✚ 認證解毒站</span></b><small>原型食物 · 溫沙拉 · 400m · 步行 6 分</small></span><span class="ac"><button class="go" onclick="launchMini('nuan')">去點餐</button><button onclick="dxVerify(0)">模擬到店核銷</button></span></div>
+              <div class="dx-st"><span class="lg">🍱</span><span class="in"><b>原味時代健康餐盒 府中店 <span class="dx-cross">✚</span></b><small>低 GI · 舒肥 · 350m · 步行 5 分</small></span><span class="ac"><button onclick="dxVerify(1)">模擬到店核銷</button></span></div>
+              <div class="dx-st"><span class="lg">🥤</span><span class="in"><b>果漾 Fresh 冷壓蔬果飲 <span class="dx-cross">✚</span></b><small>無加糖 · 650m · 步行 9 分</small></span><span class="ac"><button onclick="dxVerify(2)">模擬到店核銷</button></span></div>
+              <div class="gx-note" style="margin-top:6px">解毒站＝通過審核的健康商家（只做正面認證）；名單與距離為示範。</div>
+            </div>
+            <button class="tm-banner" onclick="toast('已訂閱（示範）：7/25 開獎日＝全民複驗日，對完獎順手複驗')"><b>🗓 7/25 開獎日 ＝ 全民複驗日</b><small>對完獎，順手複驗一次——看看 T 線有沒有變淺</small></button>
+            <div id="dxBackTeam" style="display:none"><button class="gx-btn tm" onclick="openTeam()">🐣 回去看看阿呷（牠被你救活了）</button></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ 官方自營②：呷健康隊（v5.8 提案新增） ============ -->
+      <section class="scene" id="team">
+        <div class="gx-head"><button class="back" onclick="go('home')" aria-label="返回">‹</button><h2>🐣 呷健康隊</h2><span class="gx-off" style="background:linear-gradient(135deg,#2E9E6B,#177A4C)">官方自營 · 提案新增</span></div>
+        <div class="gx-body">
+          <div id="tmJoin">
+            <div class="dx-hero" style="background:linear-gradient(160deg,#E9FBF4,#F7FFFB);border-color:#CFF0E1">
+              <div class="big">🐣</div>
+              <h3 style="color:#177A4C">組隊，共養一隻「呷寶」</h3>
+              <p style="color:#4E8A6F">牠吃的不是虛擬飼料——是全隊真實嗶進來的發票。<br>你們的嘴，決定牠的臉色。</p>
+            </div>
+            <div style="height:10px"></div>
+            <div class="gx-card"><div style="font-size:12px;color:#5B6675;line-height:1.95">🍱 健康發票＝餵食加分，垃圾食物＝中毒扣分<br>🩺 牠生病了，就得有人真的去吃一頓健康的<br>🏆 週一開賽 · 週五結算 · 商圈聯賽 · 開獎日雙倍</div></div>
+            <div style="height:10px"></div>
+            <button class="gx-btn tm" onclick="tmBuild()">一鍵建隊（示範：辦公室 LINE 群 5 人）</button>
+            <div style="height:8px"></div>
+            <div class="gx-note">3–8 人成隊：辦公室、家庭、LINE 群皆可；隊長＝天然團主，是「辦公室團訂」的種子。</div>
+          </div>
+          <div id="tmMain" style="display:none">
+            <div class="tm-meta">行銷部呷飽隊 · 5/8 人 · 📍府中商圈 · 週五 18:00 結算</div>
+            <div class="tm-pet">
+              <div class="tm-face" id="tmFace">🤢</div>
+              <b style="font-size:14px;color:#175E42">阿呷 Lv.3</b>
+              <div class="tm-hp"><i id="tmHpBar" style="width:58%"></i></div>
+              <div style="font-size:11px;color:#4E8A6F;font-weight:800">健康值 <span id="tmHp">58</span>/100 · 🍏 淨化果實 ×<span id="tmFr">1</span></div>
+              <div class="tm-say" id="tmSay">「今天已經第 2 杯全糖了……你是想醃漬我嗎」</div>
+            </div>
+            <div id="tmMed" class="tm-med">
+              <b style="font-size:12.5px;color:#C0362C">🩺 阿呷中毒了——需要有人真的吃一頓健康的</b>
+              <div style="height:8px"></div>
+              <button class="gx-btn" onclick="tmMedGo()">帶就醫單去解毒站救牠（任一隊員核銷即治癒）</button>
+            </div>
+            <div class="gx-row">
+              <button class="gx-btn tm" onclick="tmFeed()">🧾 模擬：隊友嗶發票</button>
+              <button class="gx-btn line" style="color:#177A4C;border-color:#9FDCC0" onclick="tmQuiz()">❓ 每日食安問答</button>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">今日餵食</b>
+              <div class="tm-feed" id="tmFeedL">
+                <div class="tm-fd"><span>Amy · 藜麥溫沙拉</span><b class="plus">健康 +10</b></div>
+                <div class="tm-fd"><span>你 · 全糖珍珠奶茶</span><b class="minus">糖毒 −8</b></div>
+              </div>
+            </div>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">🏆 府中商圈 · 本週聯賽</b>
+              <div class="tm-rank">
+                <div class="tm-rk"><span class="no">1</span><span style="flex:1">隔壁棟工程師隊</span><b>1,240</b></div>
+                <div class="tm-rk me"><span class="no">2</span><span style="flex:1">行銷部呷飽隊（你們）</span><b id="tmPts">1,180</b></div>
+                <div class="tm-rk"><span class="no">3</span><span style="flex:1">早八不吃早餐隊</span><b>990</b></div>
+              </div>
+              <div class="gx-note" style="margin-top:7px">其他隊伍一律匿名顯示 · 前三名解鎖團體解毒券（綁核銷）</div>
+            </div>
+            <button class="tm-banner" onclick="toast('已加入（示範）：7/25 全隊回「中毒快篩」複驗，進步幅度計入隊伍積分')"><b>🗓 7/25 開獎日 ＝ 雙倍餵食日 + 全民複驗日</b><small>對完獎回來餵牠，今天統統加倍</small></button>
+            <div class="gx-card">
+              <b style="font-size:13px;color:var(--ink)">🙏 敲碗榜（想要誰入駐解毒站？）</b>
+              <div class="dx-st f"><span class="lg">🍲</span><span class="in"><b>大蔬鍋 · 蔬食火鍋（府中）</b><small>已敲碗 <span id="tmKn">312</span> 次</small></span><span class="ac"><button onclick="tmKnock()">敲碗 +1</button></span></div>
+              <div class="gx-note">敲碗數累積成名單，BD 帶著「已有 N 隊在等你」去談——需求反著長。</div>
+            </div>
+          </div>
+        </div>
+        <div class="tm-mask" id="tmQz">
+          <div class="tm-qz">
+            <h4>本週官方公布的問題食用油，被檢出超標的物質是？</h4>
+            <div class="src">每日一題 · 依官方公告自動出題（示範）</div>
+            <div id="tmQo">
+              <button class="op" onclick="tmAns(0)">A. 蘇丹紅</button>
+              <button class="op" onclick="tmAns(1)">B. 苯駢芘</button>
+              <button class="op" onclick="tmAns(2)">C. 米酵菌酸</button>
+            </div>
+            <div id="tmQr" style="display:none;font-size:12px;line-height:1.75;color:#175E42;background:#E9FBF4;border-radius:10px;padding:10px;margin-top:8px"></div>
+            <div style="height:8px"></div>
+            <button class="gx-btn tm" id="tmQc" onclick="tmQuizClose()" style="display:none">收下，回去餵牠</button>
+          </div>
+        </div>
+      </section>
+
       <!-- ============ CHECKOUT ============ -->
       <section class="scene" id="checkout">
         <div class="plainhead"><button class="back" onclick="backFromCheckout()" aria-label="返回">‹</button><h2>確認訂單</h2></div>
@@ -1330,6 +1637,11 @@ window.onerror=function(m,s,l,c){try{var b=document.getElementById("errbox");if(
         <button class="dr-app" onclick="openMerchant()"><span class="ic" style="background:var(--navy)">商</span>發票載具 商家助手</button>
         <button class="dr-app" onclick="openMini('coupons','我的券夾')"><span class="ic" style="background:linear-gradient(140deg,#B8912F,#D9B45C)">券</span>我的券夾</button>
       </div>
+      <div class="dr-t">官方自營（提案新增）</div>
+      <div class="dr-grid">
+        <button class="dr-app" onclick="openDetox()"><span class="ic" style="background:linear-gradient(140deg,#D7000F,#A50011)">🧪</span>中毒快篩</button>
+        <button class="dr-app" onclick="openTeam()"><span class="ic" style="background:linear-gradient(140deg,#2E9E6B,#177A4C)">🐣</span>呷健康隊</button>
+      </div>
       <div class="dr-t">我的小程序</div>
       <div class="dr-grid">
         <button class="dr-app" onclick="openMini('orders','我的訂單')"><span class="ic" style="background:linear-gradient(140deg,#1F3352,#0E7C7B)">單</span>我的訂單</button>
@@ -1352,9 +1664,10 @@ window.onerror=function(m,s,l,c){try{var b=document.getElementById("errbox");if(
       <li><span class="n">05</span><span><b>發券</b>：商家端發出的優惠券會即時掉進「券夾」；結帳時符合條件自動折抵。</span></li>
       <li><span class="n">06</span><span><b>二次複購</b>：訂單頁「再來一單」一鍵重下；「訂單／券夾」屬於載具本身，底部欄會回來。</span></li>
       <li><span class="n">07</span><span><b>v5.7 新增</b>：三家餐飲全開「外送」（滿 300 免運）；鼎泰豐＝取號 → 排隊預點 → 掃桌碼就座 → 商家製作；雅詩蘭黛＝一鍵入會 → 體驗預約 → 積分商城 → 下單宅配（黑貓 · 滿 1,500 免運）。</span></li>
+    <li><span class="n">08</span><span><b>v5.8 新增（官方自營）</b>：功能架新增「🧪 中毒快篩」「🐣 呷健康隊」——先猜後驗、五毒雷達、真食安比對（官方名單 × 你的發票）、解毒站核銷降毒；組隊養呷寶、每日食安問答、就醫單導流解毒站；首頁快訊泡泡直連「真食安比對」。</span></li>
     </ol>
   </div>
-  <div class="foot">發票載具 · 用戶體驗版原型 v5.7 · 未接第三方支付情境（H5 模擬小程序）<br>店家與數據皆為示範用途，非實際營業資訊</div>
+  <div class="foot">發票載具 · 用戶體驗版原型 v5.8 · 未接第三方支付情境（H5 模擬小程序）<br>店家與數據皆為示範用途，非實際營業資訊</div>
 </div>
 
 <script>
@@ -1408,7 +1721,7 @@ function send(msg){ try { if (ch) ch.postMessage(msg); } catch(e){} }
 /* ================= navigation ================= */
 var darkScenes = { nuan:1, dtf:1, el:1, magic:1, status:1 };
 /* 沈浸式：這些場景屬於「商家小程序」內部，隱藏載具 App 的底部功能列 */
-var MINI = { louisa:1, nuan:1, dtf:1, el:1, checkout:1, magic:1, status:1, review:1 };
+var MINI = { louisa:1, nuan:1, dtf:1, el:1, checkout:1, magic:1, status:1, review:1, detox:1, team:1 };
 var BRAND = {
   louisa:{ n:"路易莎咖啡", c:"LC", bg:"linear-gradient(150deg,#2A1D15,#4A3527)", kind:"food" },
   nuan:{ n:"暖暖窩義式廚房", c:"暖", bg:"linear-gradient(150deg,#242D18,#55613C)", kind:"food" },
@@ -2426,6 +2739,104 @@ function receiveCoupon(c){
 }
 
 /* ================= init ================= */
+
+/* ================= v5.8 官方自營：中毒快篩 ＋ 呷健康隊（提案新增） ================= */
+var dxScore=78, dxDone=0, dxGuess=40, dxFromTeam=false;
+var DXV=["dxV0","dxV1","dxV2","dxV3","dxV4","dxV5"];
+function dxShow(v){ var t="dxV"+v.slice(1); for(var i=0;i<DXV.length;i++){ $(DXV[i]).style.display=(DXV[i]===t)?"":"none"; } $("app").scrollTop=0; }
+function openDetox(v){
+  if ($("drawer").classList.contains("open")) closeDrawer();
+  go("detox");
+  if (v==="safe"){ dxShow("v4"); dxRunSafe(); }
+  else if (v==="rx"){ dxShow("v5"); }
+  else { dxShow("v0"); }
+}
+function dxBack(){ if ($("dxV0").style.display!=="none"){ go("home"); } else { dxShow("v0"); } }
+function dxGuessUpd(v){ dxGuess=+v; $("dxGv").textContent=v; $("dxFace").textContent = v<25?"😇":(v<50?"😏":(v<75?"😬":"🫠")); }
+function dxStartTest(){
+  dxShow("v2"); $("dxT").classList.remove("show"); $("dxTestTxt").textContent="吸入發票中…";
+  setTimeout(function(){ $("dxTestTxt").textContent="顯影中——兩條線見真章…"; $("dxT").classList.add("show"); },900);
+  setTimeout(function(){ dxShow("v3"); dxRenderResult(); },2600);
+}
+function dxRenderResult(){
+  $("dxGr").textContent=dxGuess; $("dxRv").textContent=dxScore; $("dxSc1").textContent=dxScore;
+  var d=dxScore-dxGuess;
+  $("dxGag").textContent = d>15 ? ("落差 +"+d+"——你對自己的嘴，太寬容了") : (d>0 ? ("落差 +"+d+"——差一點就被你猜到") : "比你猜的低——但 T 線還是很深，別鬆懈");
+  var bars=$("dxV3").querySelectorAll(".fl");
+  for(var i=0;i<bars.length;i++)(function(b){ setTimeout(function(){ b.style.width=b.getAttribute("data-w")+"%"; },160); })(bars[i]);
+  if (dxDone>0) $("dxT2").classList.add("half"); else $("dxT2").classList.remove("half");
+}
+function dxRunSafe(){
+  $("dxSafeR").style.display="none"; $("dxPg").style.width="0"; $("dxPgt").textContent="掃描中：近 90 天 61 家消費商家…";
+  setTimeout(function(){ $("dxPg").style.width="100%"; },80);
+  setTimeout(function(){ $("dxPgt").textContent="完成：61 家商家 · 84 個品項已比對（示範）"; $("dxSafeR").style.display=""; },1700);
+}
+function dxFamily(){
+  $("dxFam").innerHTML='<div class="dx-ok">✓　媽媽近 90 天 38 家商家，全數未命中公告名單</div><div style="height:8px"></div><button class="gx-btn line" onclick="toast(\'（示範）家人守護卡已生成——傳給媽媽：她的發票，我幫她驗過了\')">📤 傳「家人守護卡」給媽媽</button>';
+  toast("已完成家人複驗（載具歸戶授權 · 示範）");
+}
+function dxVerify(i){
+  var names=["暖暖窩義式廚房","原味時代健康餐盒","果漾 Fresh"];
+  dxDone++; var old=dxScore; dxScore=Math.max(40,dxScore-7);
+  $("dxSc2").textContent=dxScore; $("dxTk").textContent=Math.min(2,dxDone);
+  $("dxScNote").innerHTML="🎉 發票已核銷：綜合中毒 "+old+" → <b style='color:#177A4C'>"+dxScore+"</b>，T 線變淺了（糖毒 −5 · 油毒 −2）";
+  toast("解毒站核銷成功（示範）：「"+names[i]+"」 · 毒值 "+old+" → "+dxScore+" · 解毒進度卡已生成");
+  if (dxFromTeam){ tmHeal(); $("dxBackTeam").style.display=""; dxFromTeam=false; }
+}
+var tmHP=58, tmFruit=1, tmJoined=false, tmFi=0, tmKn=312, tmPts=1180;
+var TMF=[
+ ["小美 · 無糖高纖豆漿","plus","健康 +4","😊","「順口——這才叫早餐」",4],
+ ["阿宏 · 鹽酥雞（加蒜）","minus","油毒 −8","🤢","「我聞到油鍋的味道……救我」",-8],
+ ["Amy · 舒肥雞胸餐盒","plus","健康 +10","😄","「有進化的感覺！」",10],
+ ["你 · 全糖珍珠奶茶","minus","糖毒 −8","🫠","「第 3 杯了，你真的想醃漬我」",-8],
+ ["大雄 · 解毒站溫沙拉（核銷）","plus","健康 +15","😄","「這口我記住了，算他一功」",15]
+];
+function tmFmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,","); }
+function openTeam(){
+  if ($("drawer").classList.contains("open")) closeDrawer();
+  go("team");
+  if (tmJoined){ $("tmJoin").style.display="none"; $("tmMain").style.display=""; }
+}
+function tmBuild(){
+  tmJoined=true; $("tmJoin").style.display="none"; $("tmMain").style.display="";
+  toast("建隊成功（示範）：行銷部呷飽隊 · 已邀 LINE 群 5 人——隊長就是你");
+  tmRender();
+}
+function tmRender(){
+  $("tmHp").textContent=tmHP; $("tmHpBar").style.width=tmHP+"%"; $("tmFr").textContent=tmFruit;
+  $("tmFace").textContent = tmHP>=70?"😄":(tmHP>=60?"😐":(tmHP>=40?"🤢":"😵"));
+  $("tmMed").style.display = tmHP<60?"":"none";
+}
+function tmFeed(){
+  var f=TMF[tmFi%TMF.length]; tmFi++;
+  var el=document.createElement("div"); el.className="tm-fd";
+  el.innerHTML="<span>"+f[0]+"</span><b class='"+f[1]+"'>"+f[2]+"</b>";
+  var L=$("tmFeedL"); L.insertBefore(el,L.firstChild);
+  tmHP=Math.max(20,Math.min(100,tmHP+f[5])); tmPts=Math.max(0,tmPts+f[5]); $("tmPts").textContent=tmFmt(tmPts);
+  $("tmSay").textContent=f[4]; $("tmFace").textContent=f[3];
+  var fc=$("tmFace"); fc.classList.remove("hop"); void fc.offsetWidth; fc.classList.add("hop");
+  setTimeout(tmRender,650);
+}
+function tmMedGo(){ dxFromTeam=true; toast("已帶上就醫單——任一隊員在解毒站消費核銷，阿呷就會痊癒"); openDetox("rx"); }
+function tmHeal(){
+  tmHP=Math.min(100,tmHP+15); tmFruit++; tmRender();
+  $("tmSay").textContent="「復活！謝謝你們真的吃了一頓健康的 🥗」";
+  toast("🎉 阿呷痊癒了！全隊已收到治癒通知（示範） · 健康值 +15");
+}
+function tmQuiz(){ $("tmQz").classList.add("show"); $("tmQr").style.display="none"; $("tmQc").style.display="none"; $("tmQo").style.display=""; }
+function tmAns(i){
+  $("tmQo").style.display="none"; var r=$("tmQr"); r.style.display="";
+  if (i===1){
+    r.innerHTML="✓ 答對了！<b>苯駢芘</b>屬多環芳香烴類，油品高溫處理不當可能生成——本題依官方公告出題（示範）。<br>獲得 🍏 淨化果實 ×1，健康值 +5";
+    tmFruit++; tmHP=Math.min(100,tmHP+5); tmRender();
+  } else {
+    r.innerHTML="✗ 正解是 <b>B. 苯駢芘</b>。蘇丹紅為工業染劑、米酵菌酸與澱粉發酵不當有關——每天一題，全隊一起長知識。";
+  }
+  $("tmQc").style.display="";
+}
+function tmQuizClose(){ $("tmQz").classList.remove("show"); }
+function tmKnock(){ tmKn++; $("tmKn").textContent=tmKn; toast("已敲碗（示範）：BD 名單 +1——「已有 "+tmKn+" 次敲碗在等大蔬鍋」"); }
+
 setPay(PAY, false);
 go("home");
 </script>
