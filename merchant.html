@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1F3352">
-<title>發票載具｜商家工作台 v4.0（聚合版・示範）</title>
+<title>發票載具｜商家工作台 v4.1（聚合版・示範）</title>
 <style>
 :root{--navy:#1F3352;--navy2:#2C4368;--teal:#0E7C7B;--gold:#B8912F;--red:#D7000F;
   --ink:#1F2430;--muted:#7A8494;--line:#E6EAF0;--bg:#F5F6F8;
@@ -44,7 +44,7 @@ body{font-family:var(--font);background:#20304B;color:var(--ink);min-height:100v
 .lg-btn:active{transform:translateY(4px);box-shadow:0 1px 0 #8E000C}
 .lg-note{font-size:10px;color:#8FA3C2;margin-top:14px;line-height:1.8}
 #work{background:var(--bg)}
-.topbar{background:linear-gradient(120deg,#24395E,#1F3352);color:#fff;padding:44px 14px 12px;display:flex;align-items:center;gap:10px}
+.topbar{background:linear-gradient(120deg,#24395E,#1F3352);color:#fff;padding:44px 96px 12px 14px;display:flex;align-items:center;gap:10px}
 .topbar .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(150deg,#242D18,#55613C);display:flex;align-items:center;justify-content:center;font-weight:900;font-size:17px;flex:0 0 38px}
 .topbar .in{flex:1;min-width:0}
 .topbar .in b{font-size:14px;display:block}
@@ -64,10 +64,6 @@ body{font-family:var(--font);background:#20304B;color:var(--ink);min-height:100v
 .tb.on{color:var(--navy)}
 .tb .nd{position:relative}
 .tb.on .nd::after{content:"";position:absolute;left:50%;bottom:-6px;transform:translateX(-50%);width:16px;height:3px;border-radius:99px;background:var(--red)}
-.tip{position:absolute;left:12px;right:12px;bottom:14px;z-index:40;background:#15263F;color:#fff;font-size:11.5px;line-height:1.6;border-radius:12px;padding:10px 13px;box-shadow:0 12px 26px rgba(0,0,0,.35);display:none}
-.tip.show{display:block;animation:tipin .25s ease}
-@keyframes tipin{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.tip b{color:#FFD34D}
 .rail{width:min(400px,100%);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:13px 15px;color:#D7E1EF}
 .rail .t{font-size:12px;font-weight:800;color:#8FD0CB;letter-spacing:.2em;margin-bottom:9px}
 .rail ol{list-style:none;display:flex;flex-direction:column;gap:8px}
@@ -78,18 +74,49 @@ body{font-family:var(--font);background:#20304B;color:var(--ink);min-height:100v
 body.embed .stage{padding:0;gap:0}
 body.embed .stage-head,body.embed .rail,body.embed .foot{display:none}
 body.embed .phone{width:100%;max-width:100%;border-radius:0;padding:0;box-shadow:none;background:transparent}
+
+/* ===== 膠囊選單（•••｜◉） ===== */
+.mcap{position:absolute;top:44px;right:12px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.32);border-radius:16px;height:30px;padding:0 12px;color:#fff;font-size:13px;backdrop-filter:blur(4px)}
+.mcap span{cursor:pointer;line-height:1;font-weight:700}
+.mcap .sep{width:1px;height:13px;background:rgba(255,255,255,.4)}
+.mcap-mask{position:absolute;inset:0;background:rgba(15,22,36,.48);z-index:80;display:none;align-items:flex-end}
+.mcap-mask.show{display:flex}
+.mcap-sheet{background:#fff;border-radius:18px 18px 0 0;padding:14px 14px 18px;width:100%;box-shadow:0 -10px 30px rgba(10,20,40,.25)}
+.mcap-sheet h5{font-size:13px;font-weight:800;color:#1F2430;margin:2px 2px 11px}
+.mcap-grid{display:flex;gap:10px}
+.mcap-act{flex:1;border:1px solid #E6EAF0;background:#F8F9FB;border-radius:14px;padding:12px 6px;font-size:11px;font-weight:800;color:#1F2430;display:flex;flex-direction:column;align-items:center;gap:7px}
+.mcap-act .ico{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.mcap-cancel{width:100%;margin-top:12px;border:none;background:#F1F3F6;border-radius:12px;padding:12px;font-size:13px;font-weight:800;color:#3A4550}
+body.embed .mcap,body.embed .mcap-mask{display:none}
+
+.stoast{position:absolute;left:50%;bottom:88px;transform:translateX(-50%) translateY(8px);background:rgba(21,38,63,.94);color:#fff;font-size:12px;font-weight:700;padding:9px 16px;border-radius:99px;opacity:0;pointer-events:none;transition:all .25s;z-index:90;white-space:nowrap;max-width:92%;overflow:hidden;text-overflow:ellipsis}
+.stoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
 </style>
 </head>
 <body>
 <div class="stage">
   <div class="stage-head">
-    <div class="eyebrow">發票載具 · 商家端 DEMO v4.0</div>
+    <div class="eyebrow">發票載具 · 商家端 DEMO v4.1</div>
     <h1>商家工作台（聚合版）｜一個主帳號 · 三個工作台</h1>
     <p>商家助手 × 生意參謀 × 用戶端小程序預覽 —— 登入一次，來回切換</p>
   </div>
 
   <div class="phone"><div class="screen">
     <div class="sb"><span>9:41</span><span>●●●&nbsp;&nbsp;5G&nbsp;▮</span></div>
+    <div class="mcap" id="mcap"><span onclick="mcapMenu()" title="選單">•••</span><i class="sep"></i><span onclick="mcapHome()" title="登出">◉</span></div>
+    <div class="stoast" id="stoast"></div>
+    <div class="mcap-mask" id="mcapMask" onclick="mcapClose()">
+      <div class="mcap-sheet" onclick="event.stopPropagation()">
+        <h5>商家工作台 · 選單</h5>
+        <div class="mcap-grid">
+          <button class="mcap-act" onclick="mcapReload()"><span class="ico" style="background:#F1F0FA">↻</span>重新整理</button>
+          <button class="mcap-act" onclick="mcapLine()"><span class="ico" style="background:#E4F6E9">💬</span>分享到 LINE</button>
+          <button class="mcap-act" onclick="mcapCopy()"><span class="ico" style="background:#EAF2FB">🔗</span>複製連結</button>
+        </div>
+        <button class="mcap-cancel" onclick="mcapClose()">取消</button>
+      </div>
+    </div>
 
     <!-- ============ 登入 ============ -->
     <section class="view on" id="login">
@@ -110,13 +137,11 @@ body.embed .phone{width:100%;max-width:100%;border-radius:0;padding:0;box-shadow
       <div class="topbar">
         <div class="logo">暖</div>
         <div class="in"><b>暖暖窩義式廚房</b><small>主帳號 <span class="mk">已連 3 個工作台</span> 統編 24567890</small></div>
-        <button class="out" onclick="logout()">登出</button>
-      </div>
+        </div>
       <div class="frames">
         <div class="frame on" id="f0"><div class="loading" id="l0"><div class="sp"></div>載入 商家助手…</div></div>
         <div class="frame" id="f1"><div class="loading" id="l1"><div class="sp"></div>載入 生意參謀…</div></div>
         <div class="frame" id="f2"><div class="loading" id="l2"><div class="sp"></div>載入 用戶端預覽…</div></div>
-        <div class="tip" id="tip"></div>
       </div>
       <div class="tabbar">
         <button class="tb on" id="tb0" onclick="sw(0)"><span class="nd">🏪</span>商家助手</button>
@@ -134,16 +159,17 @@ body.embed .phone{width:100%;max-width:100%;border-radius:0;padding:0;box-shadow
       <li><span class="n">03</span><span><b>雙端聯動</b>：在「用戶端預覽」下一單，切回「商家助手」訂單即時進來（同網域 BroadcastChannel）——一支手機就能演完整生意閉環。</span></li>
     </ol>
   </div>
-  <div class="foot">發票載具 · 商家工作台聚合版 v4.0（內含 商家助手 v3.4 · 生意參謀 v1.1 · 用戶端 v5.9）<br>店家與數據皆為示範用途，非實際營業資訊</div>
+  <div class="foot">發票載具 · 商家工作台聚合版 v4.1（內含 商家助手 v3.5 · 生意參謀 v1.2 · 用戶端 v6.0）<br>店家與數據皆為示範用途，非實際營業資訊</div>
 </div>
 
 <script>
 var SRC = [
-  "./merchant-app.html?embed=1&v=4.0",
-  "./merchant-analytics.html?embed=1&v=4.0",
-  "./user.html?embed=1&store=nuan&v=5.9"
+  "./merchant-app.html?embed=1&v=4.1",
+  "./merchant-analytics.html?embed=1&v=4.1",
+  "./user.html?embed=1&store=nuan&v=6.0"
 ];
 var loaded = [false, false, false];
+var CUR = 0;
 function $(id){ return document.getElementById(id); }
 function mount(i){
   if (loaded[i]) return;
@@ -152,41 +178,62 @@ function mount(i){
   ifr.src = SRC[i];
   ifr.setAttribute("title", ["商家助手","生意參謀","用戶端預覽"][i]);
   ifr.onload = function(){ var l = $("l"+i); if (l) l.style.display = "none"; };
+  setTimeout(function(){ var l = $("l"+i); if (l) l.style.display = "none"; }, 4500);
   $("f"+i).appendChild(ifr);
 }
 function sw(i){
+  CUR = i;
   for (var k=0;k<3;k++){
     $("f"+k).classList.toggle("on", k===i);
     $("tb"+k).classList.toggle("on", k===i);
   }
   mount(i);
-  if (i===2 && !sw._tip2){
-    sw._tip2 = true;
-    tip("💡 <b>雙端聯動</b>：在這裡照顧客流程下一單，切回「🏪 商家助手」——訂單會即時出現在接單看板（示範）。");
-  }
-  if (i===1 && !sw._tip1){
-    sw._tip1 = true;
-    tip("📊 <b>生意參謀</b>：發票級品項數據＋每週 AI 店家小結——誰、剛剛、真的買了什麼。");
-  }
-}
-function tip(html){
-  var t = $("tip");
-  t.innerHTML = html;
-  t.classList.add("show");
-  clearTimeout(tip._t);
-  tip._t = setTimeout(function(){ t.classList.remove("show"); }, 4200);
 }
 function doLogin(){
   $("login").classList.remove("on");
   $("work").classList.add("on");
   mount(0);
-  tip("👋 歡迎回來，<b>暖暖窩義式廚房</b>——三個工作台已就緒，底部分頁隨時切換。");
 }
 function logout(){
   $("work").classList.remove("on");
   $("login").classList.add("on");
 }
 if (/[?&]embed=1/.test(location.search)) document.body.classList.add("embed");
+
+/* ===== 膠囊選單：重新整理（當前工作台）／分享 LINE／複製連結；◉＝登出 ===== */
+function stoast(msg){
+  var t = $("stoast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(t._h); t._h = setTimeout(function(){ t.classList.remove("show"); }, 1900);
+}
+function mcapMenu(){ $("mcapMask").classList.add("show"); }
+function mcapClose(){ $("mcapMask").classList.remove("show"); }
+function mcapHome(){
+  mcapClose();
+  if ($("work").classList.contains("on")){ logout(); stoast("已登出，回到主帳號登入頁"); }
+}
+function mcapReload(){
+  mcapClose();
+  if (!$("work").classList.contains("on")){ location.reload(); return; }
+  var f = $("f"+CUR).querySelector("iframe");
+  if (f){
+    var l = $("l"+CUR); if (l) l.style.display = "flex";
+    try { f.contentWindow.location.reload(); } catch(e){ f.src = f.src; }
+    setTimeout(function(){ var l2 = $("l"+CUR); if (l2) l2.style.display = "none"; }, 4500);
+    stoast("↻ 已重新整理「" + ["商家助手","生意參謀","用戶端預覽"][CUR] + "」");
+  } else { location.reload(); }
+}
+function mcapLine(){
+  var url = location.href.split("#")[0];
+  mcapClose(); stoast("正在打開 LINE 分享…");
+  try { window.open("https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(url), "_blank"); } catch(e){}
+}
+function mcapCopy(){
+  var url = location.href.split("#")[0];
+  mcapClose();
+  function ok(){ stoast("🔗 連結已複製，貼上即可分享"); }
+  function fb(){ try{ var t=document.createElement("textarea"); t.value=url; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); ok(); }catch(e){ stoast("🔗 " + url); } }
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(ok, fb); } else { fb(); }
+}
 </script>
 </body>
 </html>

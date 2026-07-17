@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>發票載具 商家版・數據參謀 v1.1（示範小程序）</title>
+<title>發票載具 商家版・數據參謀 v1.2（示範小程序）</title>
 <style>
 :root{
   --navy:#1F3352; --teal:#0E7C7B; --teal-deep:#0A5F5E;
@@ -159,14 +159,43 @@ body{font-family:var(--font);background:#20304B;color:var(--ink);min-height:100v
 /* ===== embed 模式（商家工作台嵌入） ===== */
 body.embed .foot{display:none}
 body.embed .stage{box-shadow:none;max-width:100%}
+
+/* ===== 膠囊選單（•••｜◉） ===== */
+.mcap{position:absolute;top:14px;right:12px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.32);border-radius:16px;height:30px;padding:0 12px;color:#fff;font-size:13px;backdrop-filter:blur(4px)}
+.mcap span{cursor:pointer;line-height:1;font-weight:700}
+.mcap .sep{width:1px;height:13px;background:rgba(255,255,255,.4)}
+.mcap-mask{position:absolute;inset:0;background:rgba(15,22,36,.48);z-index:80;display:none;align-items:flex-end}
+.mcap-mask.show{display:flex}
+.mcap-sheet{background:#fff;border-radius:18px 18px 0 0;padding:14px 14px 18px;width:100%;box-shadow:0 -10px 30px rgba(10,20,40,.25)}
+.mcap-sheet h5{font-size:13px;font-weight:800;color:#1F2430;margin:2px 2px 11px}
+.mcap-grid{display:flex;gap:10px}
+.mcap-act{flex:1;border:1px solid #E6EAF0;background:#F8F9FB;border-radius:14px;padding:12px 6px;font-size:11px;font-weight:800;color:#1F2430;display:flex;flex-direction:column;align-items:center;gap:7px}
+.mcap-act .ico{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.mcap-cancel{width:100%;margin-top:12px;border:none;background:#F1F3F6;border-radius:12px;padding:12px;font-size:13px;font-weight:800;color:#3A4550}
+body.embed .mcap,body.embed .mcap-mask{display:none}
+
+.hd .eyebrow{padding-right:86px}
+.mcap-sheet{padding-bottom:22px}
 </style>
 </head>
 <body>
 <div class="stage">
+<div class="mcap" id="mcap"><span onclick="mcapMenu()" title="選單">•••</span><i class="sep"></i><span onclick="mcapHome()" title="回 Demo 入口">◉</span></div>
+<div class="mcap-mask" id="mcapMask" onclick="mcapClose()">
+  <div class="mcap-sheet" onclick="event.stopPropagation()">
+    <h5>生意參謀 · 選單</h5>
+    <div class="mcap-grid">
+      <button class="mcap-act" onclick="mcapReload()"><span class="ico" style="background:#F1F0FA">↻</span>重新整理</button>
+      <button class="mcap-act" onclick="mcapLine()"><span class="ico" style="background:#E4F6E9">💬</span>分享到 LINE</button>
+      <button class="mcap-act" onclick="mcapCopy()"><span class="ico" style="background:#EAF2FB">🔗</span>複製連結</button>
+    </div>
+    <button class="mcap-cancel" onclick="mcapClose()">取消</button>
+  </div>
+</div>
 
   <!-- ================= header ================= -->
   <div class="hd">
-    <div class="eyebrow">發票載具・商家版 <span class="vtag">數據參謀 v1.1</span><span class="vtag" style="color:#FFD7DA;border-color:rgba(255,215,218,.4)">體驗版</span></div>
+    <div class="eyebrow">發票載具・商家版 <span class="vtag">數據參謀 v1.2</span><span class="vtag" style="color:#FFD7DA;border-color:rgba(255,215,218,.4)">體驗版</span></div>
     <h1>每一張發票，都是你的<span class="red">經營參謀</span></h1>
     <div class="storebar">
       <div class="storedot">🍝</div>
@@ -409,7 +438,7 @@ body.embed .stage{box-shadow:none;max-width:100%}
       </div>
     </div>
 
-    <div class="foot">示範數據・僅供體驗｜發票級數據經去識別化與商圈聚合處理｜發票載具 商家版・數據參謀 v1.1<br>同場加映：<a href="merchant.html" style="color:#7A8494">商家助手（接單台）</a> ・ <a href="user.html" style="color:#7A8494">用戶體驗版</a></div>
+    <div class="foot">示範數據・僅供體驗｜發票級數據經去識別化與商圈聚合處理｜發票載具 商家版・數據參謀 v1.2<br>同場加映：<a href="merchant.html" style="color:#7A8494">商家助手（接單台）</a> ・ <a href="user.html" style="color:#7A8494">用戶體驗版</a></div>
   </div>
 
   <!-- ================= tabbar ================= -->
@@ -457,6 +486,25 @@ body.embed .stage{box-shadow:none;max-width:100%}
     };
   }catch(e){}
 })();
+
+
+/* ===== 膠囊選單（v6.0）：重新整理／分享 LINE／複製連結 ===== */
+function mcapMenu(){ document.getElementById("mcapMask").classList.add("show"); }
+function mcapClose(){ document.getElementById("mcapMask").classList.remove("show"); }
+function mcapReload(){ mcapClose(); toast("↻ 正在重新整理…"); setTimeout(function(){ location.reload(); }, 380); }
+function mcapHome(){ location.href = "./index.html"; }
+function mcapLine(){
+  var url = location.href.split("#")[0];
+  mcapClose(); toast("正在打開 LINE 分享…");
+  try { window.open("https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(url), "_blank"); } catch(e){}
+}
+function mcapCopy(){
+  var url = location.href.split("#")[0];
+  mcapClose();
+  function ok(){ toast("🔗 連結已複製，貼上即可分享"); }
+  function fb(){ try{ var t=document.createElement("textarea"); t.value=url; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); ok(); }catch(e){ toast("🔗 " + url); } }
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(ok, fb); } else { fb(); }
+}
 
 /* embed 模式 */
 if (/[?&]embed=1/.test(location.search)) document.body.classList.add("embed");

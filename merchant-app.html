@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1F3352">
-<title>發票載具 商家助手｜商家版 v3.4（示範小程序）</title>
+<title>發票載具 商家助手｜商家版 v3.5（示範小程序）</title>
 <style>
 :root{
   --navy:#1F3352; --navy2:#2B4A78; --teal:#0E7C7B; --teal-deep:#0A5F5E; --gold:#B8912F; --gold-bg:#FAF3DF;
@@ -261,23 +261,52 @@ body.embed .stage{padding:0;gap:0}
 body.embed .stage-head,body.embed .rail,body.embed .foot{display:none}
 body.embed .phone{width:100%;max-width:100%;border-radius:0;padding:0;box-shadow:none;background:transparent}
 body.embed .screen-wrap{height:100vh;min-height:0;border-radius:0}
+body.embed .statusbar{visibility:hidden}
+
+
+/* ===== 膠囊選單（•••｜◉） ===== */
+.mcap{position:absolute;top:44px;right:12px;z-index:60;display:flex;align-items:center;gap:9px;background:rgba(0,0,0,.16);border:1px solid rgba(255,255,255,.32);border-radius:16px;height:30px;padding:0 12px;color:#fff;font-size:13px;backdrop-filter:blur(4px)}
+.mcap span{cursor:pointer;line-height:1;font-weight:700}
+.mcap .sep{width:1px;height:13px;background:rgba(255,255,255,.4)}
+.mcap-mask{position:absolute;inset:0;background:rgba(15,22,36,.48);z-index:80;display:none;align-items:flex-end}
+.mcap-mask.show{display:flex}
+.mcap-sheet{background:#fff;border-radius:18px 18px 0 0;padding:14px 14px 18px;width:100%;box-shadow:0 -10px 30px rgba(10,20,40,.25)}
+.mcap-sheet h5{font-size:13px;font-weight:800;color:#1F2430;margin:2px 2px 11px}
+.mcap-grid{display:flex;gap:10px}
+.mcap-act{flex:1;border:1px solid #E6EAF0;background:#F8F9FB;border-radius:14px;padding:12px 6px;font-size:11px;font-weight:800;color:#1F2430;display:flex;flex-direction:column;align-items:center;gap:7px}
+.mcap-act .ico{width:38px;height:38px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:17px}
+.mcap-cancel{width:100%;margin-top:12px;border:none;background:#F1F3F6;border-radius:12px;padding:12px;font-size:13px;font-weight:800;color:#3A4550}
+body.embed .mcap,body.embed .mcap-mask{display:none}
 
 </style>
 </head>
 <body>
 <script>
-window.onerror=function(m,s,l,c){try{var b=document.getElementById("errbox");if(!b){b=document.createElement("div");b.id="errbox";b.setAttribute("style","position:fixed;left:8px;right:8px;bottom:8px;z-index:99999;background:#7A1F1F;color:#fff;font:12px/1.6 Menlo,monospace;padding:10px 12px;border-radius:10px;white-space:pre-wrap");document.body.appendChild(b);}b.textContent="原型腳本異常（請截圖回報）：\n"+m+"  @"+(l||"?")+":"+(c||"?");}catch(e){}return false;};
+window.onerror=function(m,s,l,c){try{if(document.body&&document.body.classList.contains("embed")){return false;}var b=document.getElementById("errbox");if(!b){b=document.createElement("div");b.id="errbox";b.setAttribute("style","position:fixed;left:8px;right:8px;bottom:8px;z-index:99999;background:#7A1F1F;color:#fff;font:12px/1.6 Menlo,monospace;padding:10px 12px;border-radius:10px;white-space:pre-wrap;cursor:pointer");b.onclick=function(){try{b.remove();}catch(e){b.style.display="none";}};document.body.appendChild(b);}b.textContent="原型腳本異常（點擊關閉）："+m+"  @"+(l||"?")+":"+(c||"?");clearTimeout(b._h);b._h=setTimeout(function(){try{b.remove();}catch(e){b.style.display="none";}},8000);}catch(e){}return false;};
 </script>
 <noscript><div style="position:fixed;top:0;left:0;right:0;z-index:99999;background:#B8912F;color:#fff;font:13px/1.7 sans-serif;padding:12px 16px;text-align:center">此原型需要可執行 JavaScript 的瀏覽器：請用 Chrome／Edge／Safari 直接開啟本檔案；手機請改用部署後的網址體驗。</div></noscript>
 
 <div class="stage">
   <div class="stage-head">
-    <div class="eyebrow">發票載具 商家助手 · DEMO v3.4</div>
+    <div class="eyebrow">發票載具 商家助手 · DEMO v3.5</div>
     <h1>商家版｜統編開店 → 接單聯動 → 數據 → 增長</h1>
     <p>示範原型 · 與用戶版同網域開啟可即時聯動 · 資料皆為模擬</p>
   </div>
 
   <div class="phone"><div class="screen-wrap">
+<div class="mcap" id="mcap"><span onclick="mcapMenu()" title="選單">•••</span><i class="sep"></i><span onclick="mcapHome()" title="回 Demo 入口">◉</span></div>
+<div class="mcap-mask" id="mcapMask" onclick="mcapClose()">
+  <div class="mcap-sheet" onclick="event.stopPropagation()">
+    <h5>商家助手 · 選單</h5>
+    <div class="mcap-grid">
+      <button class="mcap-act" onclick="mcapReload()"><span class="ico" style="background:#F1F0FA">↻</span>重新整理</button>
+      <button class="mcap-act" onclick="mcapLine()"><span class="ico" style="background:#E4F6E9">💬</span>分享到 LINE</button>
+      <button class="mcap-act" onclick="mcapCopy()"><span class="ico" style="background:#EAF2FB">🔗</span>複製連結</button>
+    </div>
+    <button class="mcap-cancel" onclick="mcapClose()">取消</button>
+  </div>
+</div>
+
     <div class="statusbar"><span class="t">9:41</span><span class="icons">●●●&nbsp;&nbsp;5G&nbsp;▮</span></div>
     <div class="capsule"><span>•••</span><span class="dot">◉</span></div>
     <div class="timer-chip" id="timer" hidden>⏱ 開店計時 <b id="timer-v">00:00</b></div>
@@ -774,6 +803,25 @@ function sendCoupon(btn){
   send({type:"coupon", c:{ store:"nuan", storeName:"暖暖窩義式廚房", title:"回味券｜套餐折 NT$40",
         sub:"單筆滿 200 可用 · 效期 7 天", tag:"-40", amt:40, min:200 }});
   done(btn,"✓ 喚回券已發送 37 位熟客（用戶端即時收到）");
+}
+
+
+/* ===== 膠囊選單（v6.0）：重新整理／分享 LINE／複製連結 ===== */
+function mcapMenu(){ document.getElementById("mcapMask").classList.add("show"); }
+function mcapClose(){ document.getElementById("mcapMask").classList.remove("show"); }
+function mcapReload(){ mcapClose(); toast("↻ 正在重新整理…"); setTimeout(function(){ location.reload(); }, 380); }
+function mcapHome(){ location.href = "./index.html"; }
+function mcapLine(){
+  var url = location.href.split("#")[0];
+  mcapClose(); toast("正在打開 LINE 分享…");
+  try { window.open("https://social-plugins.line.me/lineit/share?url=" + encodeURIComponent(url), "_blank"); } catch(e){}
+}
+function mcapCopy(){
+  var url = location.href.split("#")[0];
+  mcapClose();
+  function ok(){ toast("🔗 連結已複製，貼上即可分享"); }
+  function fb(){ try{ var t=document.createElement("textarea"); t.value=url; document.body.appendChild(t); t.select(); document.execCommand("copy"); document.body.removeChild(t); ok(); }catch(e){ toast("🔗 " + url); } }
+  if (navigator.clipboard && navigator.clipboard.writeText){ navigator.clipboard.writeText(url).then(ok, fb); } else { fb(); }
 }
 
 /* embed 模式 */
