@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#1F3352">
-<title>發票載具｜商家工作台 v4.1（聚合版・示範）</title>
+<title>發票載具｜商家工作台 v4.3（聚合版・示範）</title>
 <style>
 :root{--navy:#1F3352;--navy2:#2C4368;--teal:#0E7C7B;--gold:#B8912F;--red:#D7000F;
   --ink:#1F2430;--muted:#7A8494;--line:#E6EAF0;--bg:#F5F6F8;
@@ -92,12 +92,26 @@ body.embed .mcap,body.embed .mcap-mask{display:none}
 .stoast{position:absolute;left:50%;bottom:88px;transform:translateX(-50%) translateY(8px);background:rgba(21,38,63,.94);color:#fff;font-size:12px;font-weight:700;padding:9px 16px;border-radius:99px;opacity:0;pointer-events:none;transition:all .25s;z-index:90;white-space:nowrap;max-width:92%;overflow:hidden;text-overflow:ellipsis}
 .stoast.show{opacity:1;transform:translateX(-50%) translateY(0)}
 
+
+/* ===== mobile full-bleed：真機掃碼＝滿版沈浸式，與用戶版小程序一致（v4.3） ===== */
+@media (max-width:520px){
+  html,body{height:100%;overflow:hidden}
+  body{background:var(--bg);background-image:none;-webkit-text-size-adjust:100%;touch-action:manipulation}
+  .stage{padding:0;gap:0;height:100vh;height:100dvh;display:block}
+  .stage>*:not(.phone){display:none!important}
+  .phone{width:100%;height:100%;max-width:none;background:transparent;border-radius:0;padding:0;box-shadow:none}
+  .screen{border-radius:0;height:100%;min-height:0}
+  .sb{display:none}
+  .mcap{top:calc(10px + env(safe-area-inset-top,0px))}
+  #login{padding-top:calc(26px + env(safe-area-inset-top,0px))}
+  .topbar{padding-top:calc(44px + env(safe-area-inset-top,0px))}
+}
 </style>
 </head>
 <body>
 <div class="stage">
   <div class="stage-head">
-    <div class="eyebrow">發票載具 · 商家端 DEMO v4.1</div>
+    <div class="eyebrow">發票載具 · 商家端 DEMO v4.3</div>
     <h1>商家工作台（聚合版）｜一個主帳號 · 三個工作台</h1>
     <p>商家助手 × 生意參謀 × 用戶端小程序預覽 —— 登入一次，來回切換</p>
   </div>
@@ -159,13 +173,13 @@ body.embed .mcap,body.embed .mcap-mask{display:none}
       <li><span class="n">03</span><span><b>雙端聯動</b>：在「用戶端預覽」下一單，切回「商家助手」訂單即時進來（同網域 BroadcastChannel）——一支手機就能演完整生意閉環。</span></li>
     </ol>
   </div>
-  <div class="foot">發票載具 · 商家工作台聚合版 v4.1（內含 商家助手 v3.5 · 生意參謀 v1.2 · 用戶端 v6.0）<br>店家與數據皆為示範用途，非實際營業資訊</div>
+  <div class="foot">發票載具 · 商家工作台聚合版 v4.3（內含 商家助手 v3.6 · 生意參謀 v1.3 · 用戶端 v6.0）<br>店家與數據皆為示範用途，非實際營業資訊</div>
 </div>
 
 <script>
 var SRC = [
-  "./merchant-app.html?embed=1&v=4.1",
-  "./merchant-analytics.html?embed=1&v=4.1",
+  "./merchant-app.html?embed=1&v=4.3",
+  "./merchant-analytics.html?embed=1&v=4.3",
   "./user.html?embed=1&store=nuan&v=6.0"
 ];
 var loaded = [false, false, false];
